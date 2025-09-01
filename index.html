@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <style>
+        /* Mobile/tablet dropdown usability improvements */
+        @media (max-width: 991px) {
+            .navbar .dropdown-menu.podcast-mega {
+                display: none !important;
+                position: fixed !important;
+                left: 0 !important;
+                top: 56px !important;
+                width: 100vw !important;
+                max-width: 100vw !important;
+                min-width: 0 !important;
+                flex-direction: column !important;
+                gap: 1.2rem !important;
+                padding: 1.5rem 1rem !important;
+                box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+                border-radius: 0 0 16px 16px;
+                z-index: 9999;
+            }
+            .navbar .dropdown-menu.podcast-mega.show {
+                display: flex !important;
+            }
+            .navbar .dropdown-menu.podcast-mega .d-flex {
+                flex-direction: column !important;
+                gap: 1.2rem !important;
+            }
+            .navbar .dropdown-menu.podcast-mega .mega-col {
+                max-width: unset;
+                min-width: unset;
+            }
+            .navbar .dropdown-item {
+                font-size: 1.15em;
+                padding: 1rem 1.2rem;
+                border-radius: 8px;
+                margin-bottom: 0.5rem;
+                background: #f8f9fa;
+                color: #212529;
+            }
+            .navbar .dropdown-item:active,
+            .navbar .dropdown-item:focus {
+                background: #e2e6ea;
+                color: #0d6efd;
+            }
+            .navbar .dropdown-menu.podcast-mega .fw-bold {
+                font-size: 1.2em;
+                margin-bottom: 0.7rem;
+            }
+        }
+        </style>
+        <script>
+        // Remove dropdown menus on tablet and mobile, show only main menu links
+        document.addEventListener('DOMContentLoaded', function() {
+            function adjustNavbarMenus() {
+                var isMobile = window.innerWidth <= 991;
+                var nav = document.querySelector('.navbar-nav');
+                if (!nav) return;
+                var dropdowns = nav.querySelectorAll('.nav-item.dropdown');
+                dropdowns.forEach(function(drop) {
+                    if (isMobile) {
+                        // Replace dropdown with a simple link to main section
+                        var link = drop.querySelector('.nav-link');
+                        if (link) {
+                            var href = link.getAttribute('href') || '#';
+                            var text = link.textContent;
+                            var newLink = document.createElement('a');
+                            newLink.className = 'nav-item nav-link';
+                            newLink.href = href;
+                            newLink.textContent = text;
+                            drop.parentNode.replaceChild(newLink, drop);
+                        }
+                    }
+                });
+            }
+            adjustNavbarMenus();
+            window.addEventListener('resize', adjustNavbarMenus);
+        });
+        </script>
+        <style>
+        /* Responsive navbar adjustments */
+        @media (max-width: 991px) {
+            .navbar .navbar-brand {
+                flex-direction: row;
+                gap: 0.5rem;
+                font-size: 1.2rem;
+            }
+            .navbar .navbar-brand img {
+                height: 32px;
+            }
+            .navbar .navbar-brand span {
+                font-size: 1.2rem;
+            }
+            .navbar-nav {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                width: 100%;
+            }
+            .navbar .dropdown-menu.podcast-mega {
+                position: static !important;
+                width: 100% !important;
+                flex-direction: column !important;
+                gap: 1rem !important;
+                padding: 1rem 0.5rem !important;
+                box-shadow: none;
+                border-radius: 0;
+            }
+            .navbar .dropdown-menu.podcast-mega .d-flex {
+                flex-direction: column !important;
+                gap: 1rem !important;
+            }
+            .navbar .dropdown-menu.podcast-mega .mega-col {
+                max-width: unset;
+                min-width: unset;
+            }
+        }
+        @media (max-width: 575px) {
+            .navbar .navbar-brand span {
+                font-size: 1rem;
+            }
+            .navbar .navbar-brand img {
+                height: 24px;
+            }
+        }
+        </style>
+        <style>
+        /* Horizontal mega menu for Podcast dropdown */
+        .navbar .dropdown-menu.podcast-mega {
+            position: absolute !important;
+            left: 0 !important;
+            top: 100% !important;
+            width: 100vw !important;
+            min-width: unset !important;
+            padding: 1.5rem 4vw;
+            margin: 0;
+            border-radius: 0 0 12px 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 3vw;
+            z-index: 999;
+        }
+        .navbar .dropdown-menu.podcast-mega .mega-col {
+            flex: 1 1 0;
+            min-width: 180px;
+            max-width: 260px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+        .navbar .dropdown-menu.podcast-mega .dropdown-divider {
+            display: none;
+        }
+        @media (max-width: 991px) {
+            .navbar .dropdown-menu.podcast-mega {
+                flex-direction: column;
+                width: 100vw !important;
+                gap: 1rem;
+                padding: 1rem 2vw;
+            }
+            .navbar .dropdown-menu.podcast-mega .mega-col {
+                max-width: unset;
+            }
+        }
+        </style>
+        <meta charset="utf-8">
+    <title>VIV AYITI - Podcast on Haiti & Haitian Diaspora</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        <!-- Google Web Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Raleway:wght@100;600;800&display=swap" rel="stylesheet"> 
+
+        <!-- Icon Font Stylesheet -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+        <!-- Libraries Stylesheet -->
+        <link href="lib/animate/animate.min.css" rel="stylesheet">
+        <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+
+        <!-- Customized Bootstrap Stylesheet -->
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Template Stylesheet -->
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+
+    <body>
+
+        <!-- Spinner Start -->
+        <div id="spinner" class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
+            <div class="spinner-grow text-primary" role="status"></div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Navbar start -->
+        <div class="container-fluid sticky-top px-0">
+            <div class="container-fluid topbar bg-dark d-none d-lg-block">
+                <div class="container px-0">
+                    <div class="topbar-top d-flex justify-content-between flex-lg-wrap">
+                        <div class="w-100 d-flex align-items-center justify-content-between flex-wrap">
+                            <div class="d-flex align-items-center flex-grow-1">
+                                <span class="rounded-circle btn-sm-square bg-warning me-2">
+                                    <i class="fas fa-bullhorn text-white"></i>
+                                </span>
+                                <div class="pe-2 me-3 border-end border-white d-flex align-items-center">
+                                    <p class="mb-0 text-white fs-6 fw-bold">Annonces</p>
+                                </div>
+                                <div class="overflow-hidden" style="width: 500px;">
+                                    <div id="announcements" class="ps-2 d-flex align-items-center" style="height:40px;">
+                                        <img src="img/podcaster1.jpeg" class="img-fluid rounded-circle border border-3 border-warning me-2" style="width: 30px; height: 30px;" alt="">
+                                        <div style="overflow:hidden; white-space:nowrap; width:430px;">
+                                            <marquee behavior="scroll" direction="left" scrollamount="5" style="color:#fff; font-weight:500; font-size:1.05em;">
+                                                🎙️ Nouvo épisode disponible! &nbsp; | &nbsp; 📢 Boutique en ligne ouverte! &nbsp; | &nbsp; 💬 Rejoignez-nous sur WhatsApp! &nbsp; | &nbsp; 🔔 Abonnez-vous pour les dernières nouvelles!
+                                            </marquee>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center flex-shrink-1 ms-auto">
+                                <div class="d-flex icon ms-3">
+                                    <p class="mb-0 text-white me-2">Suivez-nous:</p>
+                                    <a href="" class="me-2"><i class="fab fa-facebook-f text-body link-hover"></i></a>
+                                    <a href="" class="me-2"><i class="fab fa-twitter text-body link-hover"></i></a>
+                                    <a href="" class="me-2"><i class="fab fa-instagram text-body link-hover"></i></a>
+                                    <a href="" class="me-2"><i class="fab fa-youtube text-body link-hover"></i></a>
+                                    <a href="" class="me-2"><i class="fab fa-linkedin-in text-body link-hover"></i></a>
+                                    <a href="" class="me-2"><i class="fab fa-skype text-body link-hover"></i></a>
+                                    <a href="" class=""><i class="fab fa-pinterest-p text-body link-hover"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid bg-light" style="border-radius: 1.5em; border: 1px solid #e3e6ea; margin-bottom: 1em;">
+                <div class="container px-0">
+                    <nav class="navbar navbar-light navbar-expand-xl">
+                        <div class="d-flex align-items-center" style="height:100%;">
+                            <a href="index.html" class="navbar-brand d-flex align-items-center gap-2 me-4" style="height:64px;">
+                                <img src="img/mic.png" alt="VIV AYITI Logo" style="height:40px;width:auto;display:block;">
+                                <span class="fw-bold text-primary" style="font-size:1.7rem;letter-spacing:2px;">VIV AYITI</span>
+                            </a>
+                        </div>
+                        <button class="navbar-toggler py-2 px-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                            <span class="fa fa-bars text-primary"></span>
+                        </button>
+                        <div class="collapse navbar-collapse bg-light py-3" id="navbarCollapse" style="border-radius: 1.5em; border: 1px solid #e3e6ea;">
+                            <div class="navbar-nav mx-auto border-top">
+                                <a href="index.html" class="nav-item nav-link active">Accueil</a>
+                                <div class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="podcastDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Podcast</a>
+                                    <div class="dropdown-menu" aria-labelledby="podcastDropdown">
+                                        <a class="dropdown-item" href="#episodes">Tous les épisodes</a>
+                                        <a class="dropdown-item" href="#culture">Culture</a>
+                                        <a class="dropdown-item" href="#diaspora">Diaspora</a>
+                                        <a class="dropdown-item" href="#interviews">Interviews</a>
+                                        <a class="dropdown-item" href="#news">Actualités</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#hosts">Invités</a>
+                                        <a class="dropdown-item" href="#listen-live">Écouter en direct</a>
+                                        <a class="dropdown-item" href="#suggest-topic">Suggérer un sujet</a>
+                                    </div>
+                                </div>
+                                <div class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="articlesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Articles</a>
+                                    <div class="dropdown-menu" aria-labelledby="articlesDropdown">
+                                        <a class="dropdown-item" href="#articles">Tous les articles</a>
+                                        <a class="dropdown-item" href="#culture">Culture</a>
+                                        <a class="dropdown-item" href="#diaspora">Diaspora</a>
+                                        <a class="dropdown-item" href="#interviews">Interviews</a>
+                                        <a class="dropdown-item" href="#news">Actualités</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#submit-article">Proposer un article</a>
+                                    </div>
+                                </div>
+                                <a href="#boutique" class="nav-item nav-link">Boutique</a>
+                                <a href="contact.html" class="nav-item nav-link">Contact</a>
+                                <a href="#donate" class="nav-item nav-link btn btn-danger text-white fw-bold ms-3 px-3 py-1 rounded-pill d-flex align-items-center justify-content-center" style="font-size:1em;line-height:1.2;height:32px;min-width:90px;">Donate</a>
+                            </div>
+                            <div class="nav-item dropdown ms-3">
+                                <a href="#" class="nav-link dropdown-toggle" id="langDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Langue</a>
+                                <div class="dropdown-menu m-0 bg-secondary rounded-0" aria-labelledby="langDropdown">
+                                    <a href="#" class="dropdown-item" onclick="setLanguage('fr')">Français</a>
+                                    <a href="#" class="dropdown-item" onclick="setLanguage('ht')">Kreyòl</a>
+                                    <a href="#" class="dropdown-item" onclick="setLanguage('en')">English</a>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-nowrap border-top pt-3 pt-xl-0">
+                                <div class="d-flex">
+                                    <img src="img/weather-icon.png" class="img-fluid w-100 me-2" alt="">
+                                    <div class="d-flex align-items-center">
+                                        <strong class="fs-4 text-secondary">31°C</strong>
+                                        <div class="d-flex flex-column ms-2" style="width: 150px;">
+                                            <span class="text-body">NEW YORK,</span>
+                                            <small>Mon. 10 jun 2024</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="btn-search btn border border-primary btn-md-square rounded-circle bg-white my-auto ms-2" data-bs-toggle="modal" data-bs-target="#searchModal" style="padding: 0.7em 1em;"><i class="fas fa-search text-primary"></i></button>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- Navbar End -->
+
+
+        <!-- Modal Search Start -->
+        <div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen">
+                <div class="modal-content rounded-0">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Search by keyword</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body d-flex align-items-center">
+                        <div class="input-group w-75 mx-auto d-flex">
+                            <input type="search" class="form-control p-3" placeholder="keywords" aria-describedby="search-icon-1">
+                            <span id="search-icon-1" class="input-group-text p-3"><i class="fa fa-search"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Search End -->
+
+
+        <!-- Features Start -->
+        <div class="container-fluid features mb-5">
+            <div class="container py-5">
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="row g-4 align-items-center features-item">
+                            <div class="col-4">
+                                <div class="rounded-circle position-relative">
+                                    <div class="overflow-hidden rounded-circle">
+                                        <img src="img/podcast-group.png" class="img-zoomin img-fluid rounded-circle w-100" alt="">
+                                    </div>
+                                    <span class="rounded-circle border border-2 border-white bg-primary btn-sm-square text-white position-absolute" style="top: 10%; right: -10px;">1</span>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="features-content d-flex flex-column">
+                                    <p class="text-uppercase mb-2" id="feature1-title">Culture</p>
+                                    <a href="#" class="h6" id="feature1-desc">Explore Haitian music, art, and traditions.</a>
+                                    <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Podcast</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="row g-4 align-items-center features-item">
+                            <div class="col-4">
+                                <div class="rounded-circle position-relative">
+                                    <div class="overflow-hidden rounded-circle">
+                                        <img src="img/podcast-group.png" class="img-zoomin img-fluid rounded-circle w-100" alt="">
+                                    </div>
+                                    <span class="rounded-circle border border-2 border-white bg-primary btn-sm-square text-white position-absolute" style="top: 10%; right: -10px;">2</span>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="features-content d-flex flex-column">
+                                    <p class="text-uppercase mb-2" id="feature2-title">Diaspora</p>
+                                    <a href="#" class="h6" id="feature2-desc">Stories from Haitians around the world.</a>
+                                    <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Podcast</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="row g-4 align-items-center features-item">
+                            <div class="col-4">
+                                <div class="rounded-circle position-relative">
+                                    <div class="overflow-hidden rounded-circle">
+                                        <img src="img/haiti4.jpg" class="img-zoomin img-fluid rounded-circle w-100" alt="">
+                                    </div>
+                                    <span class="rounded-circle border border-2 border-white bg-primary btn-sm-square text-white position-absolute" style="top: 10%; right: -10px;">3</span>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="features-content d-flex flex-column">
+                                    <p class="text-uppercase mb-2" id="feature3-title">Interviews</p>
+                                    <a href="#" class="h6" id="feature3-desc">Meet inspiring Haitian voices.</a>
+                                    <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Podcast</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="row g-4 align-items-center features-item">
+                            <div class="col-4">
+                                <div class="rounded-circle position-relative">
+                                    <div class="overflow-hidden rounded-circle">
+                                        <img src="img/podcast-group.png" class="img-zoomin img-fluid rounded-circle w-100" alt="">
+                                    </div>
+                                    <span class="rounded-circle border border-2 border-white bg-primary btn-sm-square text-white position-absolute" style="top: 10%; right: -10px;">4</span>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="features-content d-flex flex-column">
+                                    <p class="text-uppercase mb-2" id="feature4-title">News</p>
+                                    <a href="#" class="h6" id="feature4-desc">Updates on Haiti and the diaspora.</a>
+                                    <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> Podcast</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+        // Multilingual features section
+        const featureTranslations = {
+          fr: [
+            {title: 'Culture', desc: 'Explorez la musique, l’art et les traditions haïtiennes.'},
+            {title: 'Diaspora', desc: 'Histoires de Haïtiens à travers le monde.'},
+            {title: 'Interviews', desc: 'Rencontrez des voix haïtiennes inspirantes.'},
+            {title: 'Actualités', desc: 'Mises à jour sur Haïti et la diaspora.'}
+          ],
+          ht: [
+            {title: 'Kilti', desc: 'Eksplore mizik, atizay ak tradisyon Ayiti.'},
+            {title: 'Dyaspora', desc: 'Istwa Ayisyen atravè mond lan.'},
+            {title: 'Entèvyou', desc: 'Rankontre vwa Ayisyen ki enspire.'},
+            {title: 'Nouvèl', desc: 'Mizajou sou Ayiti ak dyaspora a.'}
+          ],
+          en: [
+            {title: 'Culture', desc: 'Explore Haitian music, art, and traditions.'},
+            {title: 'Diaspora', desc: 'Stories from Haitians around the world.'},
+            {title: 'Interviews', desc: 'Meet inspiring Haitian voices.'},
+            {title: 'News', desc: 'Updates on Haiti and the diaspora.'}
+          ]
+        };
+        function setLanguage(lang) {
+          document.getElementById('banner-title').textContent = translations[lang].title;
+          document.getElementById('banner-subtitle').textContent = translations[lang].subtitle;
+          document.getElementById('banner-desc').textContent = translations[lang].desc;
+          for (let i = 1; i <= 4; i++) {
+            document.getElementById('feature'+i+'-title').textContent = featureTranslations[lang][i-1].title;
+            document.getElementById('feature'+i+'-desc').textContent = featureTranslations[lang][i-1].desc;
+          }
+        }
+        </script>
+        <!-- Features End -->
+
+
+        <!-- Main Post Section Start -->
+        <div class="container-fluid py-5">
+            <div class="container py-5">
+                <div class="row g-4">
+                    <div class="col-lg-7 col-xl-8 mt-0">
+                        <div class="position-relative overflow-hidden rounded">
+                                <img src="img/podcaster-main.webp" class="img-fluid rounded img-zoomin w-100" alt="Diaspora Cooperation">
+                                <span class="position-absolute top-0 start-0 bg-primary text-white px-3 py-2 fw-bold rounded-bottom" style="font-size:1.1em; letter-spacing:1px;">article de la semaine</span>
+                        </div>
+                        <div class="border-bottom py-3">
+                                <h2 class="display-5 text-primary mb-2">La coopération de la diaspora : un levier essentiel pour le développement d’Haïti</h2>
+                        </div>
+                            <p class="mt-3 mb-4 fs-5">
+                                La diaspora haïtienne joue un rôle clé dans le développement d’Haïti, en partageant compétences et ressources à travers le monde. Pour bâtir un avenir prospère, il est essentiel de renforcer la coopération entre la diaspora et les acteurs locaux.
+                            </p>
+                            <a href="#" class="btn btn-primary mb-4">Lire l’article complet</a>
+                        <div class="bg-light p-4 rounded">
+                            <div class="news-2">
+                    <h3 class="mb-4">À la une</h3>
+                            </div>
+                            <div class="row g-4 align-items-center">
+                                <div class="col-md-6">
+                                    <div class="rounded overflow-hidden">
+                                        <img src="img/polititian2.jpg" class="img-fluid rounded img-zoomin w-100" alt="Haitian in Canada">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="d-flex flex-column">
+                        <a href="#" class="h3">Jean-Michel, un Haïtien au Canada, réussit et veut aider son pays</a>
+                        <p class="mb-0 fs-5">Après des années de travail et de succès à Montréal, Jean-Michel rêve de retourner en Haïti pour partager son expérience et soutenir le développement local. Son parcours inspire la diaspora à s’engager pour un avenir meilleur.</p>
+                        <p class="mb-0 fs-5"><i class="fa fa-clock"></i> 08 minutes de lecture</p>
+                        <p class="mb-0 fs-5"><i class="fa fa-eye"></i> 4,2k vues</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-xl-4">
+                    <div class="bg-light rounded p-4 pt-0">
+                        <div class="row g-4">
+                            <div class="col-12">
+                                <div class="rounded overflow-hidden">
+                                    <img src="img/podcaster1.jpeg" class="img-fluid rounded img-zoomin w-100" alt="Sound Waves Podcast Cover">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="d-flex flex-column">
+                                    <a href="#" class="h4 mb-2">Sound Waves: The Future of Audio Storytelling</a>
+                                    <p class="fs-5 mb-0"><i class="fa fa-clock"></i> 45 minute episode</p>
+                                    <p class="fs-5 mb-0"><i class="fa fa-headphones"></i> 12.5k Listens</p>
+                                    <div class="mt-2">
+                                        <audio controls class="w-100">
+                                            <source src="#" type="audio/mpeg">
+                                            Your browser does not support the audio element.
+                                        </audio>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <h5 class="mb-3">Trending Episodes</h5>
+                                <div class="row g-4 align-items-center">
+                                    <div class="col-5">
+                                        <div class="overflow-hidden rounded">
+                                            <img src="img/podcaster1.jpeg" class="img-zoomin img-fluid rounded w-100" alt="Tech Talk Podcast Cover">
+                                        </div>
+                                    </div>
+                                    <div class="col-7">
+                                        <div class="features-content d-flex flex-column">
+                                            <a href="#" class="h6">Tech Talk: AI in Music Production</a>
+                                            <small><i class="fa fa-clock"></i> 38 minutes</small>
+                                            <small><i class="fa fa-headphones"></i> 8.7k Listens</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="row g-4 align-items-center">
+                                    <div class="col-5">
+                                        <div class="overflow-hidden rounded">
+                                            <img src="img/polititian1.jpg" class="img-zoomin img-fluid rounded w-100" alt="Business Insights Podcast Cover">
+                                        </div>
+                                    </div>
+                                    <div class="col-7">
+                                        <div class="features-content d-flex flex-column">
+                                            <a href="#" class="h6">Business Insights: Podcast Monetization</a>
+                                            <small><i class="fa fa-clock"></i> 52 minutes</small>
+                                            <small><i class="fa fa-headphones"></i> 9.3k Listens</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="row g-4 align-items-center">
+                                    <div class="col-5">
+                                        <div class="overflow-hidden rounded">
+                                            <img src="img/polititian2.jpg" class="img-zoomin img-fluid rounded w-100" alt="True Crime Stories Cover">
+                                        </div>
+                                    </div>
+                                    <div class="col-7">
+                                        <div class="features-content d-flex flex-column">
+                                            <a href="#" class="h6">True Crime Stories: The Vanishing</a>
+                                            <small><i class="fa fa-clock"></i> 65 minutes</small>
+                                            <small><i class="fa fa-headphones"></i> 15.2k Listens</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="row g-4 align-items-center">
+                                    <div class="col-5">
+                                        <div class="overflow-hidden rounded">
+                                            <img src="img/haiti1.jpg" class="img-zoomin img-fluid rounded w-100" alt="Health & Wellness Podcast Cover">
+                                        </div>
+                                    </div>
+                                    <div class="col-7">
+                                        <div class="features-content d-flex flex-column">
+                                            <a href="#" class="h6">Mindful Living: Meditation Techniques</a>
+                                            <small><i class="fa fa-clock"></i> 28 minutes</small>
+                                            <small><i class="fa fa-headphones"></i> 7.4k Listens</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="row g-4 align-items-center">
+                                    <div class="col-5">
+                                        <div class="overflow-hidden rounded">
+                                            <img src="img/haiti2.png" class="img-zoomin img-fluid rounded w-100" alt="Comedy Hour Podcast Cover">
+                                        </div>
+                                    </div>
+                                    <div class="col-7">
+                                        <div class="features-content d-flex flex-column">
+                                            <a href="#" class="h6">Comedy Hour: Stand-Up Special</a>
+                                            <small><i class="fa fa-clock"></i> 75 minutes</small>
+                                            <small><i class="fa fa-headphones"></i> 11.8k Listens</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center">
+                                <a href="#" class="btn btn-primary">Browse All Podcasts</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <!-- Main Post Section End -->
+
+
+        <!-- Banner Start -->
+        <div class="container-fluid py-5 my-5 banner-section" style="background: linear-gradient(rgba(202, 203, 185, 1), rgba(202, 203, 185, 1));">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-lg-7">
+                                                <h1 class="mb-4 text-primary" id="banner-title">VIV AYITI</h1>
+                                                <h2 class="mb-4" id="banner-subtitle">Podcast sur Haïti et la diaspora haïtienne</h2>
+                                                <p class="text-dark mb-4 pb-2" id="banner-desc">Bienvenue sur VIV AYITI, le podcast dédié à Haïti et à la diaspora haïtienne. Découvrez des histoires, des interviews, et des discussions sur la culture, l'actualité, et la vie haïtienne à travers le monde.</p>
+                                                <script>
+                                                // Simple language switcher
+                                                const translations = {
+                                                    fr: {
+                                                        title: 'VIV AYITI',
+                                                        subtitle: 'Podcast sur Haïti et la diaspora haïtienne',
+                                                        desc: "Bienvenue sur VIV AYITI, le podcast dédié à Haïti et à la diaspora haïtienne. Découvrez des histoires, des interviews, et des discussions sur la culture, l'actualité, et la vie haïtienne à travers le monde."
+                                                    },
+                                                    ht: {
+                                                        title: 'VIV AYITI',
+                                                        subtitle: 'Podcast sou Ayiti ak Dyaspora Ayisyen',
+                                                        desc: "Byenveni sou VIV AYITI, podcast la ki dedye a Ayiti ak dyaspora ayisyen. Dekouvri istwa, entèvyou, ak diskisyon sou kilti, nouvèl, ak lavi ayisyen atravè mond lan."
+                                                    },
+                                                    en: {
+                                                        title: 'VIV AYITI',
+                                                        subtitle: 'Podcast about Haiti and the Haitian Diaspora',
+                                                        desc: "Welcome to VIV AYITI, the podcast dedicated to Haiti and the Haitian diaspora. Discover stories, interviews, and discussions about culture, news, and Haitian life around the world."
+                                                    }
+                                                };
+                                                function setLanguage(lang) {
+                                                    document.getElementById('banner-title').textContent = translations[lang].title;
+                                                    document.getElementById('banner-subtitle').textContent = translations[lang].subtitle;
+                                                    document.getElementById('banner-desc').textContent = translations[lang].desc;
+                                                }
+                                                </script>
+                        <div class="position-relative mx-auto">
+                            <div class="row g-2 align-items-center">
+                                <div class="col-12 col-md-8 mb-2 mb-md-0">
+                                    <input class="form-control w-100 py-3 rounded-pill" type="email" placeholder="Votre email pour recevoir les épisodes">
+                                </div>
+                                <div class="col-12 col-md-4">
+                                    <button type="submit" class="btn btn-primary w-100 py-3 px-4 rounded-pill text-white" style="font-size:1em;">S'abonner</button>
+                                </div>
+                            </div>
+                                                <script>
+                                                        // Multilingual subscribe button and podcast sections
+                                                        const subscribeBtnTranslations = {
+                                                            fr: "S'abonner au podcast",
+                                                            ht: "Abònman ak podcast la",
+                                                            en: "Subscribe to the podcast"
+                                                        };
+                                                        const podcastTranslations = {
+                                                            fr: {
+                                                                episodesTitle: 'Derniers épisodes',
+                                                                episodes: [
+                                                                    {title: 'Épisode 1: La culture haïtienne', desc: 'Discussion sur la musique, l’art et les traditions d’Haïti.'},
+                                                                    {title: 'Épisode 2: La diaspora haïtienne', desc: 'Histoires et expériences des Haïtiens à l’étranger.'},
+                                                                    {title: 'Épisode 3: Invités spéciaux', desc: 'Entrevues avec des personnalités haïtiennes inspirantes.'}
+                                                                ],
+                                                                hostsTitle: 'Rencontrez les animateurs',
+                                                                hosts: [
+                                                                    {name: 'Marie Jean', desc: 'Passionnée par la culture haïtienne et la radio.'},
+                                                                    {name: 'Jean Paul', desc: 'Expert diaspora et animateur engagé.'}
+                                                                ]
+                                                            },
+                                                            ht: {
+                                                                episodesTitle: 'Dènye epizòd yo',
+                                                                episodes: [
+                                                                    {title: 'Epizòd 1: Kilti Ayiti', desc: 'Diskisyon sou mizik, atizay ak tradisyon Ayiti.'},
+                                                                    {title: 'Epizòd 2: Dyaspora Ayisyen', desc: 'Istwa ak eksperyans Ayisyen aletranje.'},
+                                                                    {title: 'Epizòd 3: Envite espesyal', desc: 'Entèvyou ak pèsonalite Ayisyen ki enspire.'}
+                                                                ],
+                                                                hostsTitle: 'Rankontre animatè yo',
+                                                                hosts: [
+                                                                    {name: 'Marie Jean', desc: 'Pasyone sou kilti Ayiti ak radyo.'},
+                                                                    {name: 'Jean Paul', desc: 'Ekspè dyaspora ak animatè angaje.'}
+                                                                ]
+                                                            },
+                                                            en: {
+                                                                episodesTitle: 'Latest Episodes',
+                                                                episodes: [
+                                                                    {title: 'Episode 1: Haitian Culture', desc: 'Discussion about music, art, and traditions of Haiti.'},
+                                                                    {title: 'Episode 2: Haitian Diaspora', desc: 'Stories and experiences of Haitians abroad.'},
+                                                                    {title: 'Episode 3: Special Guests', desc: 'Interviews with inspiring Haitian personalities.'}
+                                                                ],
+                                                                hostsTitle: 'Meet the Hosts',
+                                                                hosts: [
+                                                                    {name: 'Marie Jean', desc: 'Passionate about Haitian culture and radio.'},
+                                                                    {name: 'Jean Paul', desc: 'Diaspora expert and dedicated host.'}
+                                                                ]
+                                                            }
+                                                        };
+                                                        function setLanguage(lang) {
+                                                            document.getElementById('banner-title').textContent = translations[lang].title;
+                                                            document.getElementById('banner-subtitle').textContent = translations[lang].subtitle;
+                                                            document.getElementById('banner-desc').textContent = translations[lang].desc;
+                                                            for (let i = 1; i <= 4; i++) {
+                                                                document.getElementById('feature'+i+'-title').textContent = featureTranslations[lang][i-1].title;
+                                                                document.getElementById('feature'+i+'-desc').textContent = featureTranslations[lang][i-1].desc;
+                                                            }
+                                                            document.getElementById('subscribe-btn').textContent = subscribeBtnTranslations[lang];
+                                                            // Podcast episodes
+                                                            document.getElementById('episodes-title').textContent = podcastTranslations[lang].episodesTitle;
+                                                            for (let i = 1; i <= 3; i++) {
+                                                                document.getElementById('ep'+i+'-title').textContent = podcastTranslations[lang].episodes[i-1].title;
+                                                                document.getElementById('ep'+i+'-desc').textContent = podcastTranslations[lang].episodes[i-1].desc;
+                                                            }
+                                                            // Hosts
+                                                            document.getElementById('hosts-title').textContent = podcastTranslations[lang].hostsTitle;
+                                                            document.getElementById('host1-name').textContent = podcastTranslations[lang].hosts[0].name;
+                                                            document.getElementById('host1-desc').textContent = podcastTranslations[lang].hosts[0].desc;
+                                                            document.getElementById('host2-name').textContent = podcastTranslations[lang].hosts[1].name;
+                                                            document.getElementById('host2-desc').textContent = podcastTranslations[lang].hosts[1].desc;
+                                                        }
+                                                </script>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="rounded">
+                            <img src="img/haiti-diaspo.webp" class="img-fluid rounded w-100 rounded" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Banner End -->
+        <!-- Latest Episodes Start -->
+        <div class="container-fluid py-5" id="episodes">
+            <div class="container py-5">
+                <h2 class="mb-4" id="episodes-title">Derniers épisodes</h2>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="bg-light rounded p-4">
+                            <h4 id="ep1-title">Épisode 1: La culture haïtienne</h4>
+                            <p id="ep1-desc">Discussion sur la musique, l’art et les traditions d’Haïti.</p>
+                            <audio controls style="width:100%">
+                                <source src="#" type="audio/mpeg">
+                                Votre navigateur ne supporte pas l’audio.
+                            </audio>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="bg-light rounded p-4">
+                            <h4 id="ep2-title">Épisode 2: La diaspora haïtienne</h4>
+                            <p id="ep2-desc">Histoires et expériences des Haïtiens à l’étranger.</p>
+                            <audio controls style="width:100%">
+                                <source src="#" type="audio/mpeg">
+                                Votre navigateur ne supporte pas l’audio.
+                            </audio>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="bg-light rounded p-4">
+                            <h4 id="ep3-title">Épisode 3: Invités spéciaux</h4>
+                            <p id="ep3-desc">Entrevues avec des personnalités haïtiennes inspirantes.</p>
+                            <audio controls style="width:100%">
+                                <source src="#" type="audio/mpeg">
+                                Votre navigateur ne supporte pas l’audio.
+                            </audio>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4 d-flex flex-wrap gap-3">
+                    <a href="#" class="btn btn-primary">Spotify</a>
+                    <a href="#" class="btn btn-secondary">Apple Podcasts</a>
+                    <a href="#" class="btn btn-dark">Google Podcasts</a>
+                </div>
+            </div>
+        </div>
+        <!-- Latest Episodes End -->
+        <!-- Meet the Hosts Start -->
+        <div class="container-fluid py-5" id="hosts">
+            <div class="container py-5">
+                <h2 class="mb-4" id="hosts-title">Rencontrez les animateurs</h2>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="bg-light rounded p-4 text-center">
+                            <img src="img/haiti4.jpg" class="img-fluid rounded-circle mb-3" style="width:120px;height:120px;object-fit:cover;" alt="Host 1">
+                            <h5 id="host1-name">Marie Jean</h5>
+                            <p id="host1-desc">Passionnée par la culture haïtienne et la radio.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="bg-light rounded p-4 text-center">
+                            <img src="img/haiti5.jpeg" class="img-fluid rounded-circle mb-3" style="width:120px;height:120px;object-fit:cover;" alt="Host 2">
+                            <h5 id="host2-name">Jean Paul</h5>
+                            <p id="host2-desc">Expert diaspora et animateur engagé.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="bg-light rounded p-4 text-center">
+                            <img src="img/podcaster1.jpeg" class="img-fluid rounded-circle mb-3" style="width:120px;height:120px;object-fit:cover;" alt="Host 3">
+                            <h5 id="host3-name">Sophie Laurent</h5>
+                            <p id="host3-desc">Journaliste et conteuse passionnée d’Haïti.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Meet the Hosts End -->
+
+
+        <!-- Latest News Start -->
+        <div class="container-fluid latest-news py-5">
+            <div class="container py-5">
+                <h2 class="mb-4">Articles</h2>
+                <div class="latest-news-carousel owl-carousel">
+                    <div class="latest-news-item">
+                        <div class="bg-light rounded">
+                            <div class="rounded-top overflow-hidden">
+                                <img src="img/haiti1.jpg" class="img-zoomin img-fluid rounded-top w-100" alt="Diaspora Article">
+                            </div>
+                            <div class="d-flex flex-column p-4">
+                                <a href="#" class="h4">La diaspora haïtienne : moteur de changement</a>
+                                <p class="mb-2">Comment les Haïtiens à l’étranger contribuent au développement d’Haïti.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="small text-body">par Marie Jean</span>
+                                    <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> 1 Sep 2025</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="latest-news-item">
+                        <div class="bg-light rounded">
+                            <div class="rounded-top overflow-hidden">
+                                <img src="img/haiti2.png" class="img-zoomin img-fluid rounded-top w-100" alt="Culture Article">
+                            </div>
+                            <div class="d-flex flex-column p-4">
+                                <a href="#" class="h4">La culture haïtienne à l’honneur</a>
+                                <p class="mb-2">Un regard sur la musique, l’art et les traditions qui font la richesse d’Haïti.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="small text-body">par Jean Paul</span>
+                                    <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> 28 Août 2025</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="latest-news-item">
+                        <div class="bg-light rounded">
+                            <div class="rounded-top overflow-hidden">
+                                <img src="img/haiti3.jpg" class="img-zoomin img-fluid rounded-top w-100" alt="Interview Article">
+                            </div>
+                            <div class="d-flex flex-column p-4">
+                                <a href="#" class="h4">Entretien avec un entrepreneur haïtien</a>
+                                <p class="mb-2">Découvrez le parcours inspirant d’un membre de la diaspora qui investit en Haïti.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="small text-body">par Willum Skeem</span>
+                                    <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> 20 Août 2025</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="latest-news-item">
+                        <div class="bg-light rounded">
+                            <div class="rounded-top overflow-hidden">
+                                <img src="img/haiti4.jpg" class="img-zoomin img-fluid rounded-top w-100" alt="News Article">
+                            </div>
+                            <div class="d-flex flex-column p-4">
+                                <a href="#" class="h4">Actualités : Haïti aujourd’hui</a>
+                                <p class="mb-2">Les dernières nouvelles et analyses sur la situation en Haïti et dans la diaspora.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="small text-body">par Marie Jean</span>
+                                    <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> 15 Août 2025</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="latest-news-item">
+                        <div class="bg-light rounded">
+                            <div class="rounded-top overflow-hidden">
+                                <img src="img/haiti5.jpeg" class="img-zoomin img-fluid rounded-top w-100" alt="Special Article">
+                            </div>
+                            <div class="d-flex flex-column p-4">
+                                <a href="#" class="h4">Spécial : Portraits de la diaspora</a>
+                                <p class="mb-2">Des histoires inspirantes de réussite et d’engagement à travers le monde.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="small text-body">par Jean Paul</span>
+                                    <small class="text-body d-block"><i class="fas fa-calendar-alt me-1"></i> 5 Août 2025</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Latest News End -->
+
+        <!-- Footer Start -->
+        <!-- Donate Now Section Start -->
+        <div class="container-fluid py-5 my-5" style="background: linear-gradient(rgba(245, 245, 220, 0.95), rgba(245, 245, 220, 0.95));">
+            <div class="container">
+                <div class="row g-4 align-items-center">
+                    <div class="col-12">
+                        <h1 class="mb-4 text-danger">Soutenez VIV AYITI</h1>
+                        <h2 class="mb-4">Aidez Haïti et sa diaspora à aller plus loin</h2>
+                        <p class="text-dark mb-4 pb-2">Votre don permet de soutenir la production du podcast, d’amplifier les voix haïtiennes et d’investir dans des projets pour la diaspora et le développement d’Haïti. Chaque contribution compte pour bâtir un avenir meilleur.</p>
+                        <div class="position-relative mx-auto">
+                            <a href="#donate" class="btn btn-danger py-3 px-5 rounded-pill text-white fw-bold" style="font-size:1.2em;">Faire un don maintenant</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Donate Now Section End -->
+        <div class="container-fluid bg-dark footer py-5">
+            <div class="container py-5">
+                <div class="pb-4 mb-4" style="border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
+                    <div class="row g-4">
+                        <div class="col-lg-3">
+                            <a href="#" class="d-flex flex-column flex-wrap">
+                                <p class="text-white mb-0 display-6">VIV AYITI</p>
+                                <small class="text-light" style="letter-spacing: 5px; line-height: 0;">Podcast & Diaspora</small>
+                            </a>
+                        </div>
+                        <div class="col-lg-9">
+                            <form class="footer-newsletter d-flex gap-3" style="width:100%;">
+                                <input type="email" class="form-control rounded-pill" placeholder="Votre email pour la newsletter" style="font-size:1.25em; padding:1em 1.2em;">
+                                <button type="submit" class="btn btn-primary rounded-pill px-4" style="font-size:1.15em; padding:1em 2em;">S'abonner</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-5">
+                    <div class="col-lg-6 col-xl-3">
+                        <div class="footer-item-1">
+                            <h4 class="mb-4 text-white">Podcast</h4>
+                            <a class="btn-link text-white" href="#episodes">Episodes</a>
+                            <a class="btn-link text-white" href="#hosts">Invités</a>
+                            <a class="btn-link text-white" href="#listen-live">Écouter en direct</a>
+                            <a class="btn-link text-white" href="#suggest-topic">Suggérer un sujet</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-3">
+                        <div class="footer-item-2">
+                            <h4 class="mb-4 text-white">Articles</h4>
+                            <a class="btn-link text-white" href="#articles">Catégories</a>
+                            <a class="btn-link text-white" href="#submit-article">Proposer un article</a>
+                            <a class="btn-link text-white" href="#featured-essays">À la une</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-3">
+                        <div class="footer-item-3">
+                            <h4 class="mb-4 text-white">Communauté</h4>
+                            <a class="btn-link text-white" href="#activities">Activités</a>
+                            <a class="btn-link text-white" href="#resources">Ressources</a>
+                            <a class="btn-link text-white" href="#about">À propos</a>
+                            <a class="btn-link text-white" href="#contact">Contact</a>
+                            <a class="btn-link text-white" href="#faq">FAQ</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-3">
+                        <div class="footer-item-4">
+                            <h4 class="mb-4 text-white">Our Gallary</h4>
+                            <div class="row g-2">
+                                <div class="col-4">
+                                    <div class="rounded overflow-hidden">
+                                        <img src="img/haiti1.jpg" class="img-zoomin img-fluid rounded w-100" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="rounded overflow-hidden">
+                                        <img src="img/haiti2.png" class="img-zoomin img-fluid rounded w-100" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="rounded overflow-hidden">
+                                        <img src="img/haiti3.jpg" class="img-zoomin img-fluid rounded w-100" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="rounded overflow-hidden">
+                                        <img src="img/haiti4.jpg" class="img-zoomin img-fluid rounded w-100" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="rounded overflow-hidden">
+                                        <img src="img/haiti5.jpeg" class="img-zoomin img-fluid rounded w-100" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="rounded overflow-hidden">
+                                        <img src="img/podcaster1.jpeg" class="img-zoomin img-fluid rounded w-100" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer End -->
+
+        <!-- Copyright Start -->
+        <div class="container-fluid copyright bg-dark py-4">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-8 text-center text-md-start mb-2 mb-md-0">
+                        <span class="d-flex align-items-center gap-2 text-light" style="font-size:1.1em;">
+                            <i class="fas fa-copyright text-primary"></i>
+                            <span>2025 Viv Ayiti Podcast & Magazine</span>
+                            <span class="d-none d-md-inline">| Tous droits réservés</span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-primary border-2 border-white rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>   
+
+        
+        <!-- JavaScript Libraries -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="lib/easing/easing.min.js"></script>
+        <script src="lib/waypoints/waypoints.min.js"></script>
+        <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+        <!-- Template Javascript -->
+        <script src="js/main.js"></script>
+        <style>
+.latest-news-carousel .latest-news-item .rounded-top img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+}
+@media (max-width: 991px) {
+    .latest-news-carousel .latest-news-item .rounded-top img {
+        height: 160px;
+    }
+}
+.banner-section .rounded img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+    border-radius: 1em;
+}
+@media (max-width: 991px) {
+    .banner-section .rounded img {
+        height: 180px;
+    }
+}
+.features {
+    background: linear-gradient(135deg, #f8f9fa 70%, #e3e6ea 100%);
+    border-radius: 2em;
+    box-shadow: 0 8px 32px rgba(44,62,80,0.10);
+    margin-top: 2em;
+    margin-bottom: 2em;
+    padding: 2em 0;
+}
+.features .features-item {
+    background: #fff;
+    border-radius: 1.5em;
+    box-shadow: 0 4px 24px rgba(0,123,255,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+    position: relative;
+}
+.features .features-item:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 8px 32px rgba(0,123,255,0.15);
+}
+.features .features-item .rounded-circle.position-relative {
+    box-shadow: 0 4px 16px rgba(0,123,255,0.10);
+    border: 4px solid #fff;
+    background: linear-gradient(135deg, #e3e6ea 60%, #fff 100%);
+}
+.features .features-content {
+    background: rgba(255,255,255,0.92);
+    border-radius: 1em;
+    box-shadow: 0 2px 12px rgba(44,62,80,0.07);
+    padding: 1.2em 1em;
+    margin-top: -1.5em;
+    position: relative;
+    z-index: 2;
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.features .features-content p {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: #007bff;
+    letter-spacing: 1px;
+    margin-bottom: 0.5em;
+}
+.features .features-content a.h6 {
+    font-size: 1.05em;
+    color: #232526;
+    font-weight: 500;
+    margin-bottom: 0.5em;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.features .features-content a.h6:hover {
+    color: #007bff;
+    text-decoration: underline;
+}
+.features .features-content small {
+    color: #6c757d;
+    font-size: 0.95em;
+}
+.features .btn-sm-square {
+    box-shadow: 0 2px 8px rgba(0,123,255,0.15);
+    font-size: 1.1em;
+}
+@media (max-width: 991px) {
+    .features {
+        border-radius: 1em;
+        padding: 1em 0.5em;
+    }
+    .features .features-content {
+        margin-top: 0;
+        padding: 1em 0.7em;
+        min-height: 120px;
+    }
+}
+</style>
+    </body>
+
+</html>
